@@ -1,0 +1,71 @@
+{% extends "comman.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+ {% if user.is_staff %}
+  <div class="alert alert-success" role="alert">
+      You are Admin
+  </div>
+{% endif %}
+ <div class="" role="alert">
+     <h1 class="btn btn-success">Welcome, {{ user.first_name }} {{ user.last_name }} </h1>
+ </div>
+  </div>
+<div class="jumbotron">
+    <div class="btn btn-info" role="alert">
+      Your Profile
+  </div>
+ <div class="container">
+  <div class="row">
+    <div class="col-4">
+      Username :
+    </div>
+    <div class="col-4">
+      {{ user.username }}
+    </div>
+  </div>
+     <div class="row">
+    <div class="col-4">
+      First Name:
+    </div>
+    <div class="col-4">
+      {{ user.first_name }}
+    </div>
+  </div>
+     <div class="row">
+    <div class="col-4">
+      Last Name :
+    </div>
+    <div class="col-4">
+      {{ user.last_name }}
+    </div>
+  </div>
+     <div class="row">
+    <div class="col-4">
+      Email:
+    </div>
+    <div class="col-4">
+      {{ user.email }}
+    </div>
+  </div>
+</div>
+
+
+
+
+{% else %}
+<div class="jumbotron">
+  <h1 class="display-4">Welcome in Aapnik Assignment</h1>
+  <div class="alert alert-success" role="alert">
+  If you are admin then click on admin to go to admin panel
+      <br>
+       <a class="btn btn-primary " href="admin" role="button">Go To admin Panel</a>
+</div>
+  <hr class="my-4">
+  <p>For normal User</p>
+  <a class="btn btn-danger" href="{% url 'social:begin' 'google-oauth2' %}" role="button">Sign in with Google</a>
+    <a class="btn btn-danger" href="{% url 'social:begin' 'google-oauth2' %}" role="button">Sign Up with Google</a>
+</div>
+{% endif %}
+
+{% endblock %}
+
